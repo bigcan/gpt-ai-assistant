@@ -9,7 +9,6 @@ import fetchUser from './fetch-user.js';
 import fetchVersion from './fetch-version.js';
 import generateCompletion from './generate-completion.js';
 import generateImage from './generate-image.js';
-import generateTranscription from './generate-transcription.js';
 import getCommand from './get-command.js';
 import getVersion from './get-version.js';
 import replyMessage from './reply-message.js';
@@ -27,7 +26,6 @@ export {
   fetchVersion,
   generateCompletion,
   generateImage,
-  generateTranscription,
   getCommand,
   getVersion,
   replyMessage,

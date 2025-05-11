@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.0.0 (2024-XX-XX)
+
+### New Features
+
+- Migrate from OpenAI models to Google Gemini models
+- Add support for `gemini-pro` and `gemini-pro-vision` models
+- Update configuration to support Gemini API parameters
+
 ## 4.9.1 (2024-07-10)
 
 ### Bug Fixes

@@ -1,6 +1,6 @@
 import config from '../../config/index.js';
 import { MOCK_TEXT_OK } from '../../constants/mock.js';
-import { ROLE_AI, ROLE_HUMAN } from '../../services/openai.js';
+import { ROLE_AI, ROLE_HUMAN } from '../../services/gemini.js';
 import { generateImage } from '../../utils/index.js';
 import { COMMAND_BOT_DRAW } from '../commands/index.js';
 import Context from '../context.js';

@@ -1,6 +1,6 @@
 import { TYPE_TRANSLATE } from '../../constants/command.js';
 import { t } from '../../locales/index.js';
-import { ROLE_AI, ROLE_HUMAN } from '../../services/openai.js';
+import { ROLE_AI, ROLE_HUMAN } from '../../services/gemini.js';
 import { generateCompletion, getCommand } from '../../utils/index.js';
 import { ALL_COMMANDS, COMMAND_BOT_CONTINUE, ENQUIRE_COMMANDS } from '../commands/index.js';
 import Context from '../context.js';

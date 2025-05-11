@@ -4,6 +4,7 @@ import config from '../config/index.js';
 import { validateLineSignature } from '../middleware/index.js';
 import storage from '../storage/index.js';
 import { fetchVersion, getVersion } from '../utils/index.js';
+import { verifyEnv, printEnvVerificationResults } from '../utils/verify-env.js';
 
 const app = express();
 
@@ -35,8 +36,24 @@ app.post(config.APP_WEBHOOK_PATH, validateLineSignature, async (req, res) => {
   if (config.APP_DEBUG) printPrompts();
 });
 
-if (config.APP_PORT) {
-  app.listen(config.APP_PORT);
+// Verify environment variables before starting the server
+const envVerificationResults = verifyEnv();
+printEnvVerificationResults(envVerificationResults);
+
+// Only start the server if all required environment variables are present and valid
+if (envVerificationResults.allRequiredPresent) {
+  if (config.APP_PORT) {
+    app.listen(config.APP_PORT, () => {
+      console.log(`Server running on port ${config.APP_PORT}`);
+    });
+  } else {
+    console.log('No APP_PORT specified, server will be available via serverless functions');
+  }
+} else {
+  console.error('Server not started due to missing or invalid required environment variables.');
+  if (process.env.NODE_ENV === 'production') {
+    process.exit(1);
+  }
 }
 
 export default app;

@@ -1,5 +1,5 @@
 import config from '../../config/index.js';
-import { ROLE_AI } from '../../services/openai.js';
+import { ROLE_AI } from '../../services/gemini.js';
 import { generateCompletion } from '../../utils/index.js';
 import { COMMAND_BOT_CONTINUE, COMMAND_BOT_RETRY, GENERAL_COMMANDS } from '../commands/index.js';
 import Context from '../context.js';

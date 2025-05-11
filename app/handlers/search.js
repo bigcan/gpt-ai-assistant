@@ -1,6 +1,6 @@
 import config from '../../config/index.js';
 import { t } from '../../locales/index.js';
-import { ROLE_AI, ROLE_HUMAN } from '../../services/openai.js';
+import { ROLE_AI, ROLE_HUMAN } from '../../services/gemini.js';
 import { fetchAnswer, generateCompletion } from '../../utils/index.js';
 import { COMMAND_BOT_CONTINUE, COMMAND_BOT_SEARCH } from '../commands/index.js';
 import Context from '../context.js';

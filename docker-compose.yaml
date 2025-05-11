@@ -2,7 +2,7 @@ version: "3"
 
 services:
   app:
-    container_name: gpt-ai-assistant
+    container_name: gemini-ai-assistant
     build: .
     restart: always
     ports:

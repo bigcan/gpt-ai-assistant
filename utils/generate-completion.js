@@ -1,6 +1,6 @@
 import config from '../config/index.js';
 import { MOCK_TEXT_OK } from '../constants/mock.js';
-import { createChatCompletion, FINISH_REASON_STOP } from '../services/openai.js';
+import { createChatCompletion, FINISH_REASON_STOP } from '../services/gemini.js';
 
 class Completion {
   text;
@@ -30,10 +30,14 @@ const generateCompletion = async ({
 }) => {
   if (config.APP_ENV !== 'production') return new Completion({ text: MOCK_TEXT_OK });
   const { data } = await createChatCompletion({ messages: prompt.messages });
-  const [choice] = data.choices;
+  
+  // Gemini API response structure is different from OpenAI
+  const response = data.candidates[0];
+  const content = response.content.parts[0].text.trim();
+  
   return new Completion({
-    text: choice.message.content.trim(),
-    finishReason: choice.finish_reason,
+    text: content,
+    finishReason: response.finishReason,
   });
 };
 

@@ -1,4 +1,4 @@
-import { encode } from 'gpt-3-encoder';
+
 import config from '../../config/index.js';
 import { t } from '../../locales/index.js';
 import { addMark } from '../../utils/index.js';
@@ -18,8 +18,8 @@ class History {
   }
 
   get tokenCount() {
-    const encoded = encode(this.toString());
-    return encoded.length;
+    // Simple token count estimation (characters / 4)
+    return Math.ceil(this.toString().length / 4);
   }
 
   erase() {

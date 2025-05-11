@@ -1,7 +1,6 @@
-import { encode } from 'gpt-3-encoder';
 import config from '../../config/index.js';
 import { t } from '../../locales/index.js';
-import { ROLE_AI, ROLE_HUMAN, ROLE_SYSTEM } from '../../services/openai.js';
+import { ROLE_AI, ROLE_HUMAN, ROLE_SYSTEM } from '../../services/gemini.js';
 import { addMark } from '../../utils/index.js';
 import Message from './message.js';
 
@@ -26,8 +25,8 @@ class Prompt {
   }
 
   get tokenCount() {
-    const encoded = encode(this.toString());
-    return encoded.length;
+    // Simple token count estimation (characters / 4)
+    return Math.ceil(this.toString().length / 4);
   }
 
   erase() {
